@@ -1,8 +1,9 @@
 services:
-  web:
-    image: nginx:alpine
-    ports:
-      - "8080:80"
-
-  redis:
-    image: redis:alpine
+  app:
+    image: nginx
+    environment:
+      APP_ENV: ${APP_ENV}
+      APP_PORT: ${APP_PORT}
+      DATABASE_HOST: db
+  db:
+    image: postgres:18
